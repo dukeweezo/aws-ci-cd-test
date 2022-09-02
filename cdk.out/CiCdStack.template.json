@@ -189,7 +189,7 @@
                 "Configuration": {
                   "Owner": "dukeweezo",
                   "Repo": "aws-ci-cd-test",
-                  "Branch": "main",
+                  "Branch": "master",
                   "OAuthToken": "{{resolve:secretsmanager:github-token:SecretString:::}}",
                   "PollForSourceChanges": false
                 },
