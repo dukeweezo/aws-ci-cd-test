@@ -1,0 +1,71 @@
+{
+  "version": "16.0.0",
+  "artifacts": {
+    "CiCdStackprodLambdaStack1DC126FC.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "CiCdStackprodLambdaStack1DC126FC.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "CiCdStackprodLambdaStack1DC126FC": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://541594771816/us-west-1",
+      "properties": {
+        "templateFile": "CiCdStackprodLambdaStack1DC126FC.template.json",
+        "validateOnSynth": true,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::541594771816:role/cdk-hnb659fds-deploy-role-541594771816-us-west-1",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::541594771816:role/cdk-hnb659fds-cfn-exec-role-541594771816-us-west-1",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-541594771816-us-west-1/a207a1e07fa54f2dba04c15d2511e40fcbfc4f0fc877a7596b4567524ba2c407.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "CiCdStackprodLambdaStack1DC126FC.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::541594771816:role/cdk-hnb659fds-lookup-role-541594771816-us-west-1",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        },
+        "stackName": "prod-LambdaStack"
+      },
+      "dependencies": [
+        "CiCdStackprodLambdaStack1DC126FC.assets"
+      ],
+      "metadata": {
+        "/CiCdStack/prod/LambdaStack/LambdaFunction/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LambdaFunctionServiceRoleC555A460"
+          }
+        ],
+        "/CiCdStack/prod/LambdaStack/LambdaFunction/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LambdaFunctionBF21E41F"
+          }
+        ],
+        "/CiCdStack/prod/LambdaStack/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/CiCdStack/prod/LambdaStack/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/CiCdStack/prod/LambdaStack/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "CiCdStack/prod/LambdaStack"
+    }
+  }
+}

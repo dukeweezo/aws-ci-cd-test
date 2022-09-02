@@ -1,0 +1,112 @@
+{
+  "Resources": {
+    "LambdaFunctionServiceRoleC555A460": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+              ]
+            ]
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "CiCdStack/test/LambdaStack/LambdaFunction/ServiceRole/Resource"
+      }
+    },
+    "LambdaFunctionBF21E41F": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": "cdk-hnb659fds-assets-541594771816-us-west-1",
+          "S3Key": "ca00d5c9dbdda0066dccb75cf561d93a03f7db08b5fd38058c48df3879257558.zip"
+        },
+        "Role": {
+          "Fn::GetAtt": [
+            "LambdaFunctionServiceRoleC555A460",
+            "Arn"
+          ]
+        },
+        "Environment": {
+          "Variables": {
+            "stageName": "test"
+          }
+        },
+        "Handler": "handler.handler",
+        "Runtime": "nodejs12.x"
+      },
+      "DependsOn": [
+        "LambdaFunctionServiceRoleC555A460"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "CiCdStack/test/LambdaStack/LambdaFunction/Resource",
+        "aws:asset:path": "../asset.ca00d5c9dbdda0066dccb75cf561d93a03f7db08b5fd38058c48df3879257558",
+        "aws:asset:is-bundled": false,
+        "aws:asset:property": "Code"
+      }
+    },
+    "CDKMetadata": {
+      "Type": "AWS::CDK::Metadata",
+      "Properties": {
+        "Analytics": "v2:deflate64:H4sIAAAAAAAA/zWMQQ6CMBBFz8K+HUUS41ZMPAAcgAylkgE6TZhWFw13t2BcvT/v588FbnAu8CPaDLNeqIfUBjSzyqpLC7p+QEjPyCaQZ/V48T9vitBBavxid71zU1J1KGKDwH1HvqGOZrahRsn1IfP/kXg8RlZ8XE1u2A8WJjm9yyuUFZTFJER6jRzIWWh+/ALhA5narQAAAA=="
+      },
+      "Metadata": {
+        "aws:cdk:path": "CiCdStack/test/LambdaStack/CDKMetadata/Default"
+      }
+    }
+  },
+  "Parameters": {
+    "BootstrapVersion": {
+      "Type": "AWS::SSM::Parameter::Value<String>",
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+    }
+  },
+  "Rules": {
+    "CheckBootstrapVersion": {
+      "Assertions": [
+        {
+          "Assert": {
+            "Fn::Not": [
+              {
+                "Fn::Contains": [
+                  [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5"
+                  ],
+                  {
+                    "Ref": "BootstrapVersion"
+                  }
+                ]
+              }
+            ]
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+        }
+      ]
+    }
+  }
+}
