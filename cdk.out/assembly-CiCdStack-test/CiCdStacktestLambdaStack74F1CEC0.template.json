@@ -39,7 +39,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": "cdk-hnb659fds-assets-541594771816-us-west-1",
-          "S3Key": "ca00d5c9dbdda0066dccb75cf561d93a03f7db08b5fd38058c48df3879257558.zip"
+          "S3Key": "4ce5c47710b25c32de93024112e09eab4670e8fc71c24b66cd4497ef00ddc264.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -52,15 +52,15 @@
             "stageName": "test"
           }
         },
-        "Handler": "handler.handler",
-        "Runtime": "nodejs12.x"
+        "Handler": "hello.handler",
+        "Runtime": "python3.7"
       },
       "DependsOn": [
         "LambdaFunctionServiceRoleC555A460"
       ],
       "Metadata": {
         "aws:cdk:path": "CiCdStack/test/LambdaStack/LambdaFunction/Resource",
-        "aws:asset:path": "../asset.ca00d5c9dbdda0066dccb75cf561d93a03f7db08b5fd38058c48df3879257558",
+        "aws:asset:path": "../asset.4ce5c47710b25c32de93024112e09eab4670e8fc71c24b66cd4497ef00ddc264",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
